@@ -1318,6 +1318,141 @@ nav {
   font-weight: 500;
 }
 
+/* ── VIS: PRESENTATION CANVAS ── */
+.v-canvas-showcase {
+  width: 100%;
+  max-width: 330px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.v-canvas-preview {
+  aspect-ratio: 16/10;
+  border-radius: 12px;
+  border: 1px solid var(--border-glass-strong);
+  display: block; /* Changed from flex to block to allow absolute children */
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-premium);
+  transition: background 0.3s ease;
+  box-sizing: border-box;
+  width: 100%;
+}
+.v-canvas-preview.padding-zero {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Background Types */
+.v-canvas-preview.bg-gradient {
+  background: linear-gradient(135deg, #2563eb 0%, #d946ef 100%);
+}
+
+.v-canvas-preview.bg-solid {
+  background: #27272a;
+}
+
+.v-canvas-preview.bg-image {
+  background-image: url("assets/topography_bg.png?v=1.1.4");
+  background-size: cover;
+  background-position: center;
+}
+
+.v-canvas-inner {
+  position: absolute; /* Set to absolute to dynamically scale via top/left/right/bottom values */
+  top: 12%;
+  left: 12%;
+  right: 12%;
+  bottom: 12%;
+  background: #09090b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.45);
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: top 0.2s ease, left 0.2s ease, right 0.2s ease, bottom 0.2s ease, border-radius 0.2s ease, box-shadow 0.2s ease;
+}
+
+.v-canvas-screen-content {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background: radial-gradient(circle at center, #1b1b22 0%, #0d0d12 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v-canvas-app-window {
+  width: 90%;
+  height: 80%;
+  background: rgba(30, 30, 35, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+}
+
+.v-canvas-win-header {
+  height: 20px;
+  padding: 0 8px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.v-canvas-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.v-win-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.v-win-dot.red { background: #ff5f56; }
+.v-win-dot.yellow { background: #ffbd2e; }
+.v-win-dot.green { background: #27c93f; }
+
+.v-canvas-tab {
+  font-family: var(--ff-mono);
+  font-size: 7px;
+  color: var(--ink-muted);
+  letter-spacing: 0.05em;
+}
+
+.v-canvas-win-body {
+  flex: 1;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.v-canvas-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.v-canvas-sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
 
 /* ── GUIDE ── */
 .guide-section {

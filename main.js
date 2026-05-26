@@ -1,10 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
-  setupTeleprompter();
-  setupCameraBubble();
-  setupCursorSpotlight();
-  setupSubtitles();
-  setupCopyButtons();
-  setupNavbarActiveLinks();
+  const init = (name, fn) => {
+    try {
+      fn();
+    } catch (e) {
+      console.error(`Error initializing ${name}:`, e);
+    }
+  };
+
+  init('Teleprompter', setupTeleprompter);
+  init('CameraBubble', setupCameraBubble);
+  init('CursorSpotlight', setupCursorSpotlight);
+  init('Subtitles', setupSubtitles);
+  init('PresentationCanvas', setupPresentationCanvas);
+  init('CopyButtons', setupCopyButtons);
+  init('NavbarActiveLinks', setupNavbarActiveLinks);
 });
 
 /* ── 1. INTERACTIVE TELEPROMPTER ── */
@@ -114,8 +123,27 @@ function setupCameraBubble() {
   const bubble = document.getElementById('demoCamBubble');
   const buttons = document.querySelectorAll('[data-cam-pos]');
   const shapeButtons = document.querySelectorAll('[data-cam-shape]');
+  const sizeSlider = document.getElementById('camSizeSlider');
+  const sizeVal = document.getElementById('camSizeVal');
   
   if (!bubble) return;
+
+  // Size Slider Control
+  if (sizeSlider && sizeVal) {
+    sizeSlider.addEventListener('input', (e) => {
+      const size = e.target.value;
+      bubble.style.width = `${size}px`;
+      bubble.style.height = `${size}px`;
+      bubble.style.fontSize = `${size * 0.32}px`;
+      sizeVal.textContent = `${size}px`;
+    });
+    
+    // Initial sync
+    const initSize = sizeSlider.value;
+    bubble.style.width = `${initSize}px`;
+    bubble.style.height = `${initSize}px`;
+    bubble.style.fontSize = `${initSize * 0.32}px`;
+  }
 
   // Position Buttons
   buttons.forEach(btn => {
@@ -390,4 +418,92 @@ function setupNavbarActiveLinks() {
       }
     });
   });
+}
+
+/* ── 7. INTERACTIVE PRESENTATION CANVAS ── */
+function setupPresentationCanvas() {
+  const preview = document.getElementById('canvasPreview');
+  const inner = document.getElementById('canvasInner');
+  const bgButtons = document.querySelectorAll('[data-canvas-bg]');
+  
+  const padSlider = document.getElementById('canvasPaddingSlider');
+  const padVal = document.getElementById('canvasPaddingVal');
+  const cornerSlider = document.getElementById('canvasCornersSlider');
+  const cornerVal = document.getElementById('canvasCornersVal');
+  const shadowSlider = document.getElementById('canvasShadowSlider');
+  const shadowVal = document.getElementById('canvasShadowVal');
+  
+  if (!preview || !inner || !padSlider || !cornerSlider || !shadowSlider) return;
+  
+  // Background Buttons
+  bgButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      bgButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      const bgType = btn.getAttribute('data-canvas-bg');
+      preview.className = 'v-canvas-preview'; // Reset classes
+      preview.classList.add(`bg-${bgType}`);
+      
+      if (parseInt(padSlider.value, 10) === 0) {
+        preview.classList.add('padding-zero');
+      }
+    });
+  });
+  
+  // Padding Slider
+  padSlider.addEventListener('input', (e) => {
+    const val = parseInt(e.target.value, 10);
+    if (val === 0) {
+      preview.classList.add('padding-zero');
+      inner.style.top = '0';
+      inner.style.left = '0';
+      inner.style.right = '0';
+      inner.style.bottom = '0';
+      inner.style.borderRadius = '12px';
+    } else {
+      preview.classList.remove('padding-zero');
+      inner.style.top = `${val}%`;
+      inner.style.left = `${val}%`;
+      inner.style.right = `${val}%`;
+      inner.style.bottom = `${val}%`;
+      inner.style.borderRadius = `${cornerSlider.value}px`;
+    }
+    padVal.textContent = `${val}%`;
+  });
+  
+  // Corners Slider
+  cornerSlider.addEventListener('input', (e) => {
+    const val = e.target.value;
+    if (parseInt(padSlider.value, 10) !== 0) {
+      inner.style.borderRadius = `${val}px`;
+    }
+    cornerVal.textContent = `${val}px`;
+  });
+  
+  // Shadow Slider
+  shadowSlider.addEventListener('input', (e) => {
+    const val = e.target.value;
+    inner.style.boxShadow = `0 ${val/2}px ${val}px rgba(0, 0, 0, 0.45)`;
+    shadowVal.textContent = `${val}px`;
+  });
+  
+  // Run initial updates to sync values
+  const initPadding = parseInt(padSlider.value, 10);
+  if (initPadding === 0) {
+    preview.classList.add('padding-zero');
+    inner.style.top = '0';
+    inner.style.left = '0';
+    inner.style.right = '0';
+    inner.style.bottom = '0';
+    inner.style.borderRadius = '12px';
+  } else {
+    preview.classList.remove('padding-zero');
+    inner.style.top = `${initPadding}%`;
+    inner.style.left = `${initPadding}%`;
+    inner.style.right = `${initPadding}%`;
+    inner.style.bottom = `${initPadding}%`;
+    inner.style.borderRadius = `${cornerSlider.value}px`;
+  }
+  inner.style.boxShadow = `0 ${shadowSlider.value/2}px ${shadowSlider.value}px rgba(0, 0, 0, 0.45)`;
 }

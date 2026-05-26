@@ -15,7 +15,50 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Geist:wght@300;400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
   
   <!-- Shared Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=1.2.0">
+
+  <!-- Inline Presentation Canvas Styles to bypass caching -->
+  <style>
+    .v-canvas-preview {
+      aspect-ratio: 16/10 !important;
+      border-radius: 12px !important;
+      border: 1px solid var(--border-glass-strong) !important;
+      display: block !important;
+      position: relative !important;
+      overflow: hidden !important;
+      box-shadow: var(--shadow-premium) !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .v-canvas-preview.padding-zero {
+      border-color: transparent !important;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+    .v-canvas-preview.bg-gradient {
+      background: linear-gradient(135deg, #2563eb 0%, #d946ef 100%) !important;
+    }
+    .v-canvas-preview.bg-solid {
+      background: #27272a !important;
+    }
+    .v-canvas-preview.bg-image {
+      background-image: url("assets/topography_bg.png?v=1.1.4") !important;
+      background-size: cover !important;
+      background-position: center !important;
+    }
+    .v-canvas-inner {
+      position: absolute !important;
+      background: #09090b !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.45) !important;
+      box-sizing: border-box !important;
+      overflow: hidden !important;
+      transition: top 0.2s ease, left 0.2s ease, right 0.2s ease, bottom 0.2s ease, border-radius 0.2s ease, box-shadow 0.2s ease !important;
+    }
+  </style>
 
   <!-- Vercel Web Analytics -->
   <script>
@@ -45,7 +88,6 @@
 
   <!-- HERO -->
   <section class="hero" id="home">
-    <div class="hero-bg-num" aria-hidden="true">1</div>
 
     <div class="hero-eyebrow">
       <span class="take-num">Native macOS Screen Recorder</span>
@@ -93,14 +135,116 @@
   <div class="ruled-section" id="features">
 
     <div class="takes-header">
-      <h2 class="takes-heading">Four features.<br><em>Zero post-production.</em></h2>
-      <span class="takes-count">04 TAKES</span>
+      <h2 class="takes-heading">Five features.<br><em>Zero post-production.</em></h2>
+      <span class="takes-count">05 TAKES</span>
     </div>
 
-    <!-- TAKE 01: Teleprompter -->
-    <div class="take" id="take-teleprompter">
+    <!-- TAKE 01: Presentation Canvas -->
+    <div class="take" id="take-canvas">
       <div class="take-index">
         <span class="take-n">01</span>
+        <div class="take-line"></div>
+      </div>
+      <div class="take-copy">
+        <div class="take-kicker">Presentation Canvas</div>
+        <h3 class="take-title">Elevate the canvas.<br><em>Keep it clean.</em></h3>
+        <p class="take-desc">Surround your recorded screen with a presentation canvas. Select a solid background, smooth color gradient, or custom background image, and adjust layout padding, corner rounding, and drop shadows on the fly.</p>
+        <div class="take-specs">
+          <div class="ts-row">
+            <span class="ts-key">Background Type</span>
+            <span class="ts-val">Solid · Gradient · Custom Image</span>
+          </div>
+          <div class="ts-row">
+            <span class="ts-key">Layout sliders</span>
+            <span class="ts-val">Padding · Corners · Shadows</span>
+          </div>
+          <div class="ts-row">
+            <span class="ts-key">Widescreen output</span>
+            <span class="ts-val">16:9 widescreen scaling</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Interactive Canvas visual -->
+      <div class="take-vis">
+        <div class="v-canvas-showcase">
+          <div class="v-canvas-preview bg-gradient" id="canvasPreview">
+            <div class="v-canvas-inner" id="canvasInner">
+              <!-- Mock macOS desktop UI inside screen recording -->
+              <div class="v-canvas-screen-content">
+                <!-- Mac App window -->
+                <div class="v-canvas-app-window">
+                  <div class="v-canvas-win-header">
+                    <div class="v-canvas-dots">
+                      <span class="v-win-dot red"></span>
+                      <span class="v-win-dot yellow"></span>
+                      <span class="v-win-dot green"></span>
+                    </div>
+                    <div class="v-canvas-tab">Dashboard</div>
+                  </div>
+                  <div class="v-canvas-win-body">
+                    <!-- Simple sidebar & grid layout mockup -->
+                    <div style="display: flex; gap: 10px; width: 100%; height: 100%;">
+                      <div style="width: 25%; display: flex; flex-direction: column; gap: 6px; border-right: 1px solid rgba(255,255,255,0.05); padding-right: 8px;">
+                        <div style="height: 6px; width: 80%; background: rgba(255,255,255,0.08); border-radius: 3px;"></div>
+                        <div style="height: 4px; width: 60%; background: rgba(255,255,255,0.04); border-radius: 2px;"></div>
+                        <div style="height: 4px; width: 70%; background: rgba(255,255,255,0.04); border-radius: 2px;"></div>
+                      </div>
+                      <div style="flex: 1; display: flex; flex-direction: column; gap: 8px; justify-content: center;">
+                        <div style="height: 10px; width: 40%; background: var(--accent-blue); opacity: 0.8; border-radius: 3px;"></div>
+                        <div style="height: 4px; width: 90%; background: rgba(255,255,255,0.04); border-radius: 2px;"></div>
+                        <div style="height: 4px; width: 80%; background: rgba(255,255,255,0.04); border-radius: 2px;"></div>
+                        <div style="height: 4px; width: 50%; background: rgba(255,255,255,0.04); border-radius: 2px;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="v-canvas-controls">
+            <span class="v-cam-ctrl-label">Background</span>
+            <div class="v-cam-btn-group">
+              <div class="v-cam-btn active" data-canvas-bg="gradient">Gradient</div>
+              <div class="v-cam-btn" data-canvas-bg="solid">Solid</div>
+              <div class="v-cam-btn" data-canvas-bg="image">Image</div>
+            </div>
+            
+            <div class="v-canvas-sliders">
+              <div class="vtc-row">
+                <span class="vtc-label">PADDING</span>
+                <div class="vtc-track vtc-slider-container">
+                  <input type="range" id="canvasPaddingSlider" class="vtc-slider" min="0" max="22" value="12">
+                </div>
+                <span class="vtc-val" id="canvasPaddingVal">12%</span>
+              </div>
+              
+              <div class="vtc-row">
+                <span class="vtc-label">CORNERS</span>
+                <div class="vtc-track vtc-slider-container">
+                  <input type="range" id="canvasCornersSlider" class="vtc-slider" min="0" max="24" value="10">
+                </div>
+                <span class="vtc-val" id="canvasCornersVal">10px</span>
+              </div>
+              
+              <div class="vtc-row">
+                <span class="vtc-label">SHADOW</span>
+                <div class="vtc-track vtc-slider-container">
+                  <input type="range" id="canvasShadowSlider" class="vtc-slider" min="0" max="30" value="15">
+                </div>
+                <span class="vtc-val" id="canvasShadowVal">15px</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAKE 02: Teleprompter -->
+    <div class="take" id="take-teleprompter">
+      <div class="take-index">
+        <span class="take-n">02</span>
         <div class="take-line"></div>
       </div>
       <div class="take-copy">
@@ -174,10 +318,10 @@
       </div>
     </div>
 
-    <!-- TAKE 02: Camera -->
+    <!-- TAKE 03: Camera -->
     <div class="take" id="take-camera">
       <div class="take-index">
-        <span class="take-n">02</span>
+        <span class="take-n">03</span>
         <div class="take-line"></div>
       </div>
       <div class="take-copy">
@@ -214,6 +358,14 @@
           </div>
           
           <div class="v-cam-controls">
+            <span class="v-cam-ctrl-label">Size</span>
+            <div class="vtc-row" style="margin-bottom: 4px; width: 100%;">
+              <div class="vtc-track vtc-slider-container" style="margin-left: 0;">
+                <input type="range" id="camSizeSlider" class="vtc-slider" min="20" max="60" value="34">
+              </div>
+              <span class="vtc-val" id="camSizeVal">34px</span>
+            </div>
+
             <span class="v-cam-ctrl-label">Position</span>
             <div class="v-cam-btn-group">
               <div class="v-cam-btn" data-cam-pos="top-left">Top-Left</div>
@@ -231,10 +383,10 @@
       </div>
     </div>
 
-    <!-- TAKE 03: Cursor -->
+    <!-- TAKE 04: Cursor -->
     <div class="take" id="take-cursor">
       <div class="take-index">
-        <span class="take-n">03</span>
+        <span class="take-n">04</span>
         <div class="take-line"></div>
       </div>
       <div class="take-copy">
@@ -284,15 +436,15 @@
       </div>
     </div>
 
-    <!-- TAKE 04: Subtitles -->
+    <!-- TAKE 05: Subtitles -->
     <div class="take" id="take-subtitles">
       <div class="take-index">
-        <span class="take-n">04</span>
+        <span class="take-n">05</span>
         <div class="take-line"></div>
       </div>
       <div class="take-copy">
-        <div class="take-kicker">AI-Powered Subtitles</div>
-        <h3 class="take-title">Word-by-word captions.<br><em>Zero editing</em> required.</h3>
+        <div class="take-kicker">Auto Generated Captions</div>
+        <h3 class="take-title">Auto generated captions.<br><em>Zero editing</em> required.</h3>
         <p class="take-desc">After recording, Sarvam AI transcribes your audio and burns aesthetically styled subtitles directly into the output video. Choose word-by-word highlights or full segment display, pick a neon color, and export.</p>
         <div class="take-specs">
           <div class="ts-row">
@@ -375,7 +527,7 @@
           <div class="gs-num">2</div>
           <div class="gs-tag gst-opt">Optional</div>
           <div class="gs-title">Configure Layout Settings</div>
-          <div class="gs-desc">Open Layout Settings to set your camera bubble size (100–600px), shape, corner, cursor zoom strength, idle delay, teleprompter font size, scroll speed, and overlay opacity.</div>
+          <div class="gs-desc">Open Layout Settings to set your presentation canvas background, layout padding, border corners, shadows, camera bubble size, shape, corner, cursor zoom strength, idle delay, and overlay opacity.</div>
         </div>
         <div class="gs-col">
           <div class="gs-num">3</div>
@@ -498,6 +650,6 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="main.js"></script>
+  <script src="main.js?v=1.2.0"></script>
 </body>
 </html>
