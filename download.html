@@ -16,6 +16,9 @@
   
   <!-- Shared Stylesheet -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Vercel Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -56,7 +59,7 @@
         <p class="dl-card-desc">Instantly transform raw screen recordings into professional presentations with a single click. Includes the native DMG installer built for macOS Ventura and later.</p>
         
         <div class="dl-btn-stack">
-          <a class="dl-action-btn primary" href="assets/OneTake.dmg" download="OneTake.dmg">
+          <a class="dl-action-btn primary" href="assets/OneTake.dmg" download="OneTake.dmg" onclick="if(window.va){va.track('download_dmg')}">
             <div class="dlab-text">
               <span class="dlab-label">Download Installer (DMG)</span>
               <span class="dlab-meta">v1.0.0 · Universal · 13.5 MB</span>
