@@ -176,19 +176,21 @@ nav {
 
 /* ── HERO ── */
 .hero {
-  min-height: 100vh;
-  padding: 140px 52px 0;
+  height: 100vh;
+  max-height: 100vh;
+  padding: 100px 52px 0;
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .hero-eyebrow {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
   animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -222,7 +224,7 @@ nav {
   letter-spacing: -0.035em;
   color: var(--ink-pure);
   max-width: 1000px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   animation: rise 0.7s 0.06s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -238,7 +240,7 @@ nav {
   line-height: 1.55;
   color: var(--ink-secondary);
   max-width: 720px;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
   animation: rise 0.7s 0.12s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -286,12 +288,13 @@ nav {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 0;
   border-top: 1px solid var(--border-glass);
-  margin-top: 64px;
+  margin-top: auto;
+  padding-bottom: 32px;
   animation: rise 0.7s 0.24s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .hero-lower-cell {
-  padding: 32px 0;
+  padding: 24px 0;
   border-right: 1px solid var(--border-glass);
   padding-right: 40px;
 }
@@ -1025,6 +1028,20 @@ nav {
 }
 
 .v-cam-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.v-cam-ctrl-label {
+  font-family: var(--ff-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.v-cam-btn-group {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 6px;

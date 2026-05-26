@@ -26,7 +26,6 @@
   <!-- NAV -->
   <nav>
     <a class="nav-logo" href="#">
-      <span class="rec-pip" id="navRecPip"></span>
       OneTake
     </a>
     <div class="nav-right">
@@ -81,66 +80,7 @@
       </div>
     </div>
 
-    <!-- Interactive App Window Mockup matching actual screenshots -->
-    <div class="hero-app-strip">
-      <div class="app-window">
-        <div class="app-titlebar">
-          <div class="tdot" style="background:#ff5f57"></div>
-          <div class="tdot" style="background:#febc2e"></div>
-          <div class="tdot" style="background:#28c840"></div>
-          <span class="app-titlebar-label">OneTake</span>
-        </div>
-        <div class="app-content">
-          <!-- Control Panel -->
-          <div class="app-panel">
-            <div class="ap-group-label">Capture</div>
-            <div class="ap-row">
-              <span class="ap-row-label">Display</span>
-              <span class="ap-row-val">Display 1 (1,470x956) <span class="ap-chevron">▾</span></span>
-            </div>
-            <div class="ap-row">
-              <span class="ap-row-label">Audio Source</span>
-              <span class="ap-row-val">Both <span class="ap-chevron">▾</span></span>
-            </div>
-            <div class="ap-row">
-              <span class="ap-row-label">Resolution</span>
-              <span class="ap-row-val">Native (Display Resolution) <span class="ap-chevron">▾</span></span>
-            </div>
-            <div class="ap-group-label">Overlay</div>
-            <div class="ap-btn-group">
-              <div class="ap-btn script-on">Show Script</div>
-              <div class="ap-btn">Layout Settings</div>
-            </div>
-            <div class="ap-rec">
-              Start Recording
-            </div>
-          </div>
-          
-          <!-- Screen Preview Overlay with custom Canvas Gradient -->
-          <div class="app-preview">
-            <div class="preview-tele">
-              <div class="preview-tele-bar">
-                <span class="ptb-title">▲ LOOK HERE (CAMERA DIRECTLY ABOVE) ▲</span>
-                <span class="ptb-active">scrolling ●</span>
-              </div>
-              <div class="preview-tele-text">
-                <div class="pt-dim">Type or paste your script here...</div>
-                <div class="pt-bright">OneTake handles scrolling and camera alignments automatically.</div>
-              </div>
-            </div>
-            <div class="preview-cursor"></div>
-            <div class="preview-cam">👤</div>
-            <div class="preview-sub">
-              <span class="sub-w">the</span>
-              <span class="sub-w">new</span>
-              <span class="sub-w on">dashboard</span>
-              <span class="sub-w">loads</span>
-              <span class="sub-w">fast</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
   </section>
 
   <!-- FEATURES -->
@@ -236,33 +176,27 @@
       </div>
       <div class="take-copy">
         <div class="take-kicker">Smart Camera Bubble</div>
-        <h3 class="take-title">Half-size on screen.<br><em>Full quality</em> on export.</h3>
-        <p class="take-desc">The floating camera bubble renders at 0.5× during recording so it stays out of your way. In the exported file it composites at 1.0× full resolution — correctly scaled at Native, 1080p, 1440p, or 4K, with border and shadow proportions preserved via Retina point scaling.</p>
+        <h3 class="take-title">A floating camera<br>that <em>stays out of your way.</em></h3>
+        <p class="take-desc">A draggable camera bubble overlays your recording with a live face cam. Pick your preferred shape and corner — OneTake keeps it small while recording and exports it at full resolution automatically.</p>
         <div class="take-specs">
           <div class="ts-row">
-            <span class="ts-key">Preview size</span>
-            <span class="ts-val">0.5× (100–600px slider)</span>
-          </div>
-          <div class="ts-row">
-            <span class="ts-key">Export size</span>
-            <span class="ts-val">1.0× full resolution</span>
+            <span class="ts-key">Size</span>
+            <span class="ts-val">100–600px (adjustable)</span>
           </div>
           <div class="ts-row">
             <span class="ts-key">Shapes</span>
             <span class="ts-val">Circle · Rounded rectangle</span>
           </div>
           <div class="ts-row">
-            <span class="ts-key">Corners</span>
-            <span class="ts-val">TL · TR · BL · BR</span>
+            <span class="ts-key">Position</span>
+            <span class="ts-val">Any corner · Draggable</span>
           </div>
         </div>
       </div>
       
-      <!-- Interactive Camera visual matching settings Screen 5 -->
       <div class="take-vis">
         <div class="v-cam">
           <div class="v-cam-row">
-            <span class="v-cam-label">On-screen</span>
             <div class="v-cam-preview">
               <div class="v-cam-screen-lines">
                 <div class="vcsl" style="width:70%"></div>
@@ -271,24 +205,21 @@
               </div>
               <div class="v-bubble sm bottom-right" id="demoCamBubble">👤</div>
             </div>
-            <span class="v-badge vb-screen">0.5×</span>
           </div>
           
           <div class="v-cam-controls">
-            <div class="v-cam-btn active" data-cam-pos="bottom-right">Bottom-Right</div>
-            <div class="v-cam-btn" data-cam-pos="bottom-left">Bottom-Left</div>
-            <div class="v-cam-btn" data-cam-pos="top-right">Top-Right</div>
-            <div class="v-cam-btn" data-cam-pos="top-left">Top-Left</div>
-            <div class="v-cam-btn active" data-cam-shape="circle">Circle</div>
-            <div class="v-cam-btn" data-cam-shape="rect">Rounded Rect</div>
-          </div>
-          
-          <div class="v-cam-row">
-            <span class="v-cam-label">Exported</span>
-            <div class="v-cam-export">
-              <div class="v-bubble lg">👤</div>
+            <span class="v-cam-ctrl-label">Position</span>
+            <div class="v-cam-btn-group">
+              <div class="v-cam-btn active" data-cam-pos="bottom-right">Bottom-Right</div>
+              <div class="v-cam-btn" data-cam-pos="bottom-left">Bottom-Left</div>
+              <div class="v-cam-btn" data-cam-pos="top-right">Top-Right</div>
+              <div class="v-cam-btn" data-cam-pos="top-left">Top-Left</div>
             </div>
-            <span class="v-badge vb-export">1.0×</span>
+            <span class="v-cam-ctrl-label">Shape</span>
+            <div class="v-cam-btn-group">
+              <div class="v-cam-btn active" data-cam-shape="circle">Circle</div>
+              <div class="v-cam-btn" data-cam-shape="rect">Rounded Rect</div>
+            </div>
           </div>
         </div>
       </div>
@@ -502,8 +433,8 @@
           <div class="chip-row">
             <span class="chip">Native</span>
             <span class="chip">1080p — 1920×1080</span>
-            <span class="chip hi">1440p — 2560×1440</span>
-            <span class="chip hi">4K — 3840×2160</span>
+            <span class="chip">1440p — 2560×1440</span>
+            <span class="chip">4K — 3840×2160</span>
           </div>
         </div>
       </div>
@@ -518,7 +449,7 @@
           <div class="chip-row">
             <span class="chip">Screen only</span>
             <span class="chip">Mic only</span>
-            <span class="chip hi">Both (blended)</span>
+            <span class="chip">Both (blended)</span>
             <span class="chip">None</span>
           </div>
         </div>
@@ -532,8 +463,8 @@
         </div>
         <div class="spec-right">
           <div class="chip-row">
-            <span class="chip hi">Apple Silicon</span>
-            <span class="chip hi">Intel</span>
+            <span class="chip">Apple Silicon</span>
+            <span class="chip">Intel</span>
             <span class="chip">Screen Recording permission</span>
             <span class="chip">Sarvam AI key (subtitles only)</span>
           </div>
