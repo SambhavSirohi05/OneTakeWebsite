@@ -52,72 +52,55 @@
   <!-- DOWNLOAD DETAILS CONTAINER -->
   <main class="dl-page-container">
     
-    <!-- LEFT SIDE: DMG Release & Security Guide -->
-    <section class="dl-page-left">
+    <!-- TOP ROW: DMG Release & Developer Build Info (Side-by-Side) -->
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: stretch; width: 100%; margin-bottom: 48px;">
       
       <!-- Primary release card -->
-      <div class="dl-main-card">
-        <img class="dl-card-icon" src="assets/AppIcon.png" alt="OneTake App Icon">
-        <h2 class="dl-card-title">OneTake for Mac</h2>
-        <p class="dl-card-desc">Instantly transform raw screen recordings into professional presentations with a single click. Includes the native DMG installer built for macOS Ventura and later.</p>
-        
-        <div class="dl-btn-stack">
-          <a class="dl-action-btn primary" href="assets/OneTake.dmg" download="OneTake.dmg" onclick="if(window.va){va.track('download_dmg')}">
-            <div class="dlab-text">
-              <span class="dlab-label">Download Installer (DMG)</span>
-              <span class="dlab-meta">v1.0.0 · Universal · 13.5 MB</span>
-            </div>
-            <span class="dlab-icon">↓</span>
-          </a>
-          <a class="dl-action-btn secondary" href="https://github.com/SambhavSirohi05/OneTake" target="_blank" rel="noopener">
-            <div class="dlab-text">
-              <span class="dlab-label">View Source on GitHub</span>
-              <span class="dlab-meta">Review code, fork, or build locally</span>
-            </div>
-            <span class="dlab-icon">↗</span>
-          </a>
+      <div class="dl-main-card" style="margin: 0; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box;">
+        <div>
+          <img class="dl-card-icon" src="assets/AppIcon.png" alt="OneTake App Icon">
+          <h2 class="dl-card-title">OneTake for Mac</h2>
+          <p class="dl-card-desc" style="margin-bottom: 24px;">Instantly transform raw screen recordings into professional presentations with a single click. Includes the native DMG installer built for macOS Ventura and later.</p>
         </div>
         
-        <div class="dl-card-requirements">
-          <div class="dl-req-cell">macOS 13.0+ (Ventura or later)</div>
-          <div class="dl-req-cell">Apple Silicon &amp; Intel Macs supported</div>
-          <div class="dl-req-cell">Screen Recording permission required</div>
-          <div class="dl-req-cell">Sarvam AI API key for subtitles (optional)</div>
-        </div>
-      </div>
-
-      <!-- Security / Gatekeeper instruction card -->
-      <div class="gatekeeper-card">
-        <span class="gk-icon">⚠️</span>
-        <div class="gk-content">
-          <span class="gk-title">Gatekeeper Exception Steps</span>
-          <p class="gk-desc">
-            Since OneTake is independently developed, macOS might show an "unidentified developer" warning. 
-            To run it, copy and run this terminal command:
-          </p>
-          <div class="gk-code-line">
-            <span class="gk-code-text" id="gkCommandText">xattr -cr /Applications/OneTake.app</span>
-            <button class="gk-copy-mini" data-copy-target="gkCommandText">Copy</button>
+        <div>
+          <div class="dl-btn-stack" style="margin-bottom: 28px;">
+            <a class="dl-action-btn primary" href="assets/OneTake.dmg" download="OneTake.dmg" onclick="if(window.va){va.track('download_dmg')}">
+              <div class="dlab-text">
+                <span class="dlab-label">Download Installer (DMG)</span>
+                <span class="dlab-meta">v1.0.0 · Universal · 13.5 MB</span>
+              </div>
+              <span class="dlab-icon">↓</span>
+            </a>
+            <a class="dl-action-btn secondary" href="https://github.com/SambhavSirohi05/OneTake" target="_blank" rel="noopener">
+              <div class="dlab-text">
+                <span class="dlab-label">View Source on GitHub</span>
+                <span class="dlab-meta">Review code, fork, or build locally</span>
+              </div>
+              <span class="dlab-icon">↗</span>
+            </a>
           </div>
-          <p class="gk-desc" style="margin-top: 6px;">
-            After executing the command, <strong>right-click</strong> OneTake in your Applications folder and click <strong>Open</strong>. This only needs to be done once!
-          </p>
+          
+          <div class="dl-card-requirements">
+            <div class="dl-req-cell">macOS 13.0+ (Ventura+)</div>
+            <div class="dl-req-cell">Apple Silicon &amp; Intel</div>
+            <div class="dl-req-cell">Screen Recording permission</div>
+            <div class="dl-req-cell">Sarvam AI key (optional)</div>
+          </div>
         </div>
       </div>
-      
-    </section>
 
-    <!-- RIGHT SIDE: Developer Build & Release Changelogs -->
-    <section class="dl-page-right">
-      
-      <!-- Developer build from source guide -->
-      <div class="dl-code-box">
-        <div class="dl-code-header">
-          <span class="dl-code-title">BUILD FROM SOURCE</span>
-          <button class="dl-copy-btn" data-copy-target="buildCodeBlock">Copy Build Commands</button>
-        </div>
-        <div class="dl-code-body">
-          <pre id="buildCodeBlock"><code><span class="code-cmt"># Clone the official repository</span>
+      <!-- RIGHT SIDE: Developer Build & Release Changelogs (Stacked, matching height of left card) -->
+      <div style="display: flex; flex-direction: column; gap: 24px; justify-content: space-between; height: 100%;">
+        
+        <!-- Developer build from source guide -->
+        <div class="dl-code-box" style="flex: 1; display: flex; flex-direction: column;">
+          <div class="dl-code-header">
+            <span class="dl-code-title">BUILD FROM SOURCE</span>
+            <button class="dl-copy-btn" data-copy-target="buildCodeBlock">Copy Build Commands</button>
+          </div>
+          <div class="dl-code-body" style="flex: 1; display: flex; align-items: center;">
+            <pre id="buildCodeBlock" style="width: 100%; margin: 0;"><code><span class="code-cmt"># Clone the official repository</span>
 <span class="code-kw">git clone</span> https://github.com/SambhavSirohi05/OneTake.git
 
 <span class="code-cmt"># Navigate into the project folder</span>
@@ -125,40 +108,85 @@
 
 <span class="code-cmt"># Run the Swift package</span>
 <span class="code-kw">swift run</span></code></pre>
+          </div>
+        </div>
+
+        <!-- Changelogs / Release card -->
+        <div class="version-card" style="flex: 1.1; display: flex; flex-direction: column; justify-content: space-between;">
+          <div class="vc-head" style="margin-bottom: 16px; padding-bottom: 12px;">
+            <span class="vc-title">Latest Release Notes</span>
+            <span class="vc-tag">v1.0.0</span>
+          </div>
+          <div class="vc-log" style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
+            <div class="vcl-item">
+              <div class="vcl-dot" style="background:#3b6eea"></div>
+              <span><strong>ScreenCaptureKit</strong>: Record up to 4K natively with low CPU.</span>
+            </div>
+            <div class="vcl-item">
+              <div class="vcl-dot" style="background:#ff9500"></div>
+              <span><strong>Invisible Teleprompter</strong>: Glassmorphic scrolling panel with click-through.</span>
+            </div>
+            <div class="vcl-item">
+              <div class="vcl-dot" style="background:#3b6eea"></div>
+              <span><strong>Smart Camera Bubble</strong>: Drift-free compositing at full quality on export.</span>
+            </div>
+            <div class="vcl-item">
+              <div class="vcl-dot" style="background:#ff9500"></div>
+              <span><strong>Cursor spotlight</strong>: Click auto-focus zoom up to 1.8x with start buffer.</span>
+            </div>
+            <div class="vcl-item">
+              <div class="vcl-dot" style="background:#3b6eea"></div>
+              <span><strong>AI subtitles</strong>: Word-highlight transcription powered by Sarvam AI.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- BOTTOM ROW: Security Exception & Sarvam Info (Side-by-Side, spans full width) -->
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: stretch; width: 100%;">
+      <!-- Security / Gatekeeper instruction card -->
+      <div class="gatekeeper-card" style="margin: 0; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box;">
+        <div style="display: flex; gap: 14px; align-items: center; margin-bottom: 12px;">
+          <span class="gk-icon" style="font-size: 22px;">⚠️</span>
+          <span class="gk-title">Gatekeeper Exception Steps</span>
+        </div>
+        <div class="gk-content" style="gap: 12px; flex: 1; justify-content: space-between;">
+          <p class="gk-desc" style="margin: 0;">
+            Since OneTake is independently developed, macOS might show an "unidentified developer" warning. 
+            To run it, run this command in Terminal:
+          </p>
+          <div class="gk-code-line" style="margin-top: 4px; margin-bottom: 4px;">
+            <span class="gk-code-text" id="gkCommandText" style="font-size: 11px;">xattr -cr /Applications/OneTake.app</span>
+            <button class="gk-copy-mini" data-copy-target="gkCommandText">Copy</button>
+          </div>
+          <p class="gk-desc" style="margin: 0; font-size: 12.5px;">
+            Then <strong>right-click</strong> OneTake in your Applications folder and click <strong>Open</strong>. This only needs to be done once!
+          </p>
         </div>
       </div>
 
-      <!-- Changelogs / Release card -->
-      <div class="version-card">
-        <div class="vc-head">
-          <span class="vc-title">Latest Release Notes</span>
-          <span class="vc-tag">v1.0.0</span>
+      <!-- Sarvam AI instruction card -->
+      <div class="gatekeeper-card" style="border: 1.5px solid rgba(0, 132, 255, 0.25); background: rgba(0, 132, 255, 0.03); margin: 0; display: flex; flex-direction: column; justify-content: space-between; height: 100%; box-sizing: border-box;">
+        <div style="display: flex; gap: 14px; align-items: center; margin-bottom: 12px;">
+          <span class="gk-icon" style="color: var(--accent-blue); font-size: 22px;">✦</span>
+          <span class="gk-title" style="color: var(--accent-blue);">Get Sarvam AI Key for Free</span>
         </div>
-        <div class="vc-log">
-          <div class="vcl-item">
-            <div class="vcl-dot" style="background:#3b6eea"></div>
-            <span><strong>ScreenCaptureKit engine</strong>: Record up to 4K at native display resolutions with low CPU overhead.</span>
-          </div>
-          <div class="vcl-item">
-            <div class="vcl-dot" style="background:#ff9500"></div>
-            <span><strong>Invisible Teleprompter</strong>: Glassmorphic scrolling panel with AppKit click-through bypass and 3s sync delay.</span>
-          </div>
-          <div class="vcl-item">
-            <div class="vcl-dot" style="background:#3b6eea"></div>
-            <span><strong>Dual-scale camera bubble</strong>: Displays at 0.5x size live while recording, but exports at full 1.0x native resolution.</span>
-          </div>
-          <div class="vcl-item">
-            <div class="vcl-dot" style="background:#ff9500"></div>
-            <span><strong>Cursor spotlight spotlighting</strong>: Auto-focus spotlight zoom up to 2.0x with a 4s startup suppression buffer.</span>
-          </div>
-          <div class="vcl-item">
-            <div class="vcl-dot" style="background:#3b6eea"></div>
-            <span><strong>Sarvam AI subtitles</strong>: Transcribe audio tracks post-recording and burn-in customized word-by-word highlights.</span>
-          </div>
+        <div class="gk-content" style="gap: 8px; flex: 1; justify-content: space-between; display: flex; flex-direction: column;">
+          <p class="gk-desc" style="margin: 0; font-size: 13px;">
+            For live transcription &amp; AI subtitles, grab a free API key with complimentary credits:
+          </p>
+          <ol class="gk-desc" style="margin: 4px 0 0 16px; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 12.5px; line-height: 1.45; flex: 1; justify-content: center;">
+            <li>Go to the <a href="https://dashboard.sarvam.ai" target="_blank" rel="noopener" style="color: var(--accent-blue); text-decoration: underline;">Sarvam Dashboard ↗</a> and register.</li>
+            <li>You receive a free credit tier automatically.</li>
+            <li>Go to the <strong>API Keys</strong> page &amp; copy your active key.</li>
+            <li>Paste it in OneTake settings to start transcribing.</li>
+          </ol>
         </div>
       </div>
-
-    </section>
+    </div>
 
   </main>
 

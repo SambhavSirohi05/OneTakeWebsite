@@ -1528,9 +1528,9 @@ nav {
 
 .dl-page-container {
   padding: 64px 52px;
-  display: grid;
-  grid-template-columns: 1.25fr 1fr;
-  gap: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
   position: relative;
   z-index: 1;
 }
