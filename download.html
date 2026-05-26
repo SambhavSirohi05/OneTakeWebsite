@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download OneTake — macOS Screen Recorder</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Download OneTake.dmg for macOS. Record screen captures, use the invisible teleprompter, cursor spotlights, and AI subtitles on Intel and Apple Silicon Macs.">
+  <meta name="keywords" content="Download OneTake, OneTake dmg, install OneTake macOS, build OneTake from source">
+  <meta name="author" content="Sambhav Sirohi">
+  <link rel="canonical" href="https://SambhavSirohi05.github.io/OneTakeWebsite/download.html" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Geist:wght@300;400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Shared Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Ambient Glows -->
+  <div class="glow-bg" aria-hidden="true"></div>
+  <div class="glow-bg-left" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <span class="rec-pip"></span>
+      OneTake
+    </a>
+    <div class="nav-right">
+      <a class="nav-a" href="index.html#features">Features</a>
+      <a class="nav-a" href="index.html#guide">Guide</a>
+      <a class="nav-a" href="index.html#specs">Specs</a>
+      <a class="nav-a" href="https://github.com/SambhavSirohi05/OneTake" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="nav-dl active" href="download.html">Download</a>
+    </div>
+  </nav>
+
+  <!-- DOWNLOAD PAGE HEADER -->
+  <header class="dl-page-header">
+    <h1 class="dl-page-headline">Get OneTake for <em>macOS.</em></h1>
+    <p class="dl-page-sub">Experience focus-free recording, cursor spotlights, and AI subtitles on your Mac. Free, open source, and lightweight.</p>
+  </header>
+
+  <!-- DOWNLOAD DETAILS CONTAINER -->
+  <main class="dl-page-container">
+    
+    <!-- LEFT SIDE: DMG Release & Security Guide -->
+    <section class="dl-page-left">
+      
+      <!-- Primary release card -->
+      <div class="dl-main-card">
+        <img class="dl-card-icon" src="assets/AppIcon.png" alt="OneTake App Icon">
+        <h2 class="dl-card-title">OneTake for Mac</h2>
+        <p class="dl-card-desc">Instantly transform raw screen recordings into professional presentations with a single click. Includes the native DMG installer built for macOS Ventura and later.</p>
+        
+        <div class="dl-btn-stack">
+          <a class="dl-action-btn primary" href="assets/OneTake.dmg" download="OneTake.dmg">
+            <div class="dlab-text">
+              <span class="dlab-label">Download Installer (DMG)</span>
+              <span class="dlab-meta">v1.0.0 · Universal · 13.5 MB</span>
+            </div>
+            <span class="dlab-icon">↓</span>
+          </a>
+          <a class="dl-action-btn secondary" href="https://github.com/SambhavSirohi05/OneTake" target="_blank" rel="noopener">
+            <div class="dlab-text">
+              <span class="dlab-label">View Source on GitHub</span>
+              <span class="dlab-meta">Review code, fork, or build locally</span>
+            </div>
+            <span class="dlab-icon">↗</span>
+          </a>
+        </div>
+        
+        <div class="dl-card-requirements">
+          <div class="dl-req-cell">macOS 13.0+ (Ventura or later)</div>
+          <div class="dl-req-cell">Apple Silicon &amp; Intel Macs supported</div>
+          <div class="dl-req-cell">Screen Recording permission required</div>
+          <div class="dl-req-cell">Sarvam AI API key for subtitles (optional)</div>
+        </div>
+      </div>
+
+      <!-- Security / Gatekeeper instruction card -->
+      <div class="gatekeeper-card">
+        <span class="gk-icon">⚠️</span>
+        <div class="gk-content">
+          <span class="gk-title">Gatekeeper Exception Steps</span>
+          <p class="gk-desc">
+            Since OneTake is independently developed, macOS might show an "unidentified developer" warning. 
+            To run it, copy and run this terminal command:
+          </p>
+          <div class="gk-code-line">
+            <span class="gk-code-text" id="gkCommandText">xattr -cr /Applications/OneTake.app</span>
+            <button class="gk-copy-mini" data-copy-target="gkCommandText">Copy</button>
+          </div>
+          <p class="gk-desc" style="margin-top: 6px;">
+            After executing the command, <strong>right-click</strong> OneTake in your Applications folder and click <strong>Open</strong>. This only needs to be done once!
+          </p>
+        </div>
+      </div>
+      
+    </section>
+
+    <!-- RIGHT SIDE: Developer Build & Release Changelogs -->
+    <section class="dl-page-right">
+      
+      <!-- Developer build from source guide -->
+      <div class="dl-code-box">
+        <div class="dl-code-header">
+          <span class="dl-code-title">BUILD FROM SOURCE</span>
+          <button class="dl-copy-btn" data-copy-target="buildCodeBlock">Copy Build Commands</button>
+        </div>
+        <div class="dl-code-body">
+          <pre id="buildCodeBlock"><code><span class="code-cmt"># Clone the official repository</span>
+<span class="code-kw">git clone</span> https://github.com/SambhavSirohi05/OneTake.git
+
+<span class="code-cmt"># Navigate into the project folder</span>
+<span class="code-kw">cd</span> OneTake
+
+<span class="code-cmt"># Run the Swift package</span>
+<span class="code-kw">swift run</span></code></pre>
+        </div>
+      </div>
+
+      <!-- Changelogs / Release card -->
+      <div class="version-card">
+        <div class="vc-head">
+          <span class="vc-title">Latest Release Notes</span>
+          <span class="vc-tag">v1.0.0</span>
+        </div>
+        <div class="vc-log">
+          <div class="vcl-item">
+            <div class="vcl-dot" style="background:#3b6eea"></div>
+            <span><strong>ScreenCaptureKit engine</strong>: Record up to 4K at native display resolutions with low CPU overhead.</span>
+          </div>
+          <div class="vcl-item">
+            <div class="vcl-dot" style="background:#ff9500"></div>
+            <span><strong>Invisible Teleprompter</strong>: Glassmorphic scrolling panel with AppKit click-through bypass and 3s sync delay.</span>
+          </div>
+          <div class="vcl-item">
+            <div class="vcl-dot" style="background:#3b6eea"></div>
+            <span><strong>Dual-scale camera bubble</strong>: Displays at 0.5x size live while recording, but exports at full 1.0x native resolution.</span>
+          </div>
+          <div class="vcl-item">
+            <div class="vcl-dot" style="background:#ff9500"></div>
+            <span><strong>Cursor spotlight spotlighting</strong>: Auto-focus spotlight zoom up to 2.0x with a 4s startup suppression buffer.</span>
+          </div>
+          <div class="vcl-item">
+            <div class="vcl-dot" style="background:#3b6eea"></div>
+            <span><strong>Sarvam AI subtitles</strong>: Transcribe audio tracks post-recording and burn-in customized word-by-word highlights.</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <a class="ft-logo" href="index.html">
+      <span style="width:6px;height:6px;background:var(--ink-muted);border-radius:50%;display:inline-block;"></span>
+      OneTake
+    </a>
+    <div class="ft-links">
+      <a class="ft-link" href="index.html#features">Features</a>
+      <a class="ft-link" href="index.html#guide">Guide</a>
+      <a class="ft-link" href="index.html#specs">Specs</a>
+      <a class="ft-link" href="https://github.com/SambhavSirohi05/OneTake" target="_blank" rel="noopener">GitHub</a>
+      <a class="ft-link" href="download.html">Download</a>
+    </div>
+    <div class="ft-copy">
+      © 2026 OneTake. Open Source under MIT License.
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="main.js"></script>
+</body>
+</html>

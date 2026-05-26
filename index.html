@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OneTake — Native macOS Screen Recorder</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="OneTake is a native macOS screen recorder that helps you produce perfect app tutorials and product demos in one take with an invisible teleprompter, smart camera scaling, and AI subtitles.">
+  <meta name="keywords" content="OneTake, macOS screen recorder, screen recording app, teleprompter screen capture, Mac app tutorial recorder, Swift screen recorder">
+  <meta name="author" content="Sambhav Sirohi">
+  <link rel="canonical" href="https://SambhavSirohi05.github.io/OneTakeWebsite/" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Geist:wght@300;400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Shared Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Ambient Glows -->
+  <div class="glow-bg" aria-hidden="true"></div>
+  <div class="glow-bg-left" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">
+      <span class="rec-pip" id="navRecPip"></span>
+      OneTake
+    </a>
+    <div class="nav-right">
+      <a class="nav-a" href="#features">Features</a>
+      <a class="nav-a" href="#guide">Guide</a>
+      <a class="nav-a" href="#specs">Specs</a>
+      <a class="nav-a" href="https://github.com/SambhavSirohi05/OneTake" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="nav-dl" href="download.html">Download</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg-num" aria-hidden="true">1</div>
+
+    <div class="hero-eyebrow">
+      <span class="take-num">Native macOS Screen Recorder</span>
+      <span class="take-sep"></span>
+      <span class="take-label">Free &amp; Open Source</span>
+    </div>
+
+    <h1 class="hero-headline">
+      Produce perfect<br>
+      screen recordings<br>
+      in <em>one take.</em>
+    </h1>
+
+    <p class="hero-subheadline">
+      No script memorization. No tedious post-edit zooms. No manual subtitle syncing. A native macOS recorder that handles it all live.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="download.html" class="hero-btn primary">Download for macOS</a>
+      <a href="https://github.com/SambhavSirohi05/OneTake" target="_blank" rel="noopener" class="hero-btn secondary">View on GitHub</a>
+    </div>
+
+    <div class="hero-lower">
+      <div class="hero-lower-cell">
+        <div class="hlc-label">Platform</div>
+        <div class="hlc-val">macOS 13+</div>
+        <div class="hlc-sub">Ventura and later · Apple Silicon + Intel</div>
+      </div>
+      <div class="hero-lower-cell">
+        <div class="hlc-label">Stack</div>
+        <div class="hlc-val">Native Swift</div>
+        <div class="hlc-sub">SwiftUI · ScreenCaptureKit · AVFoundation</div>
+      </div>
+      <div class="hero-lower-cell">
+        <div class="hlc-label">Output</div>
+        <div class="hlc-val">Up to 4K</div>
+        <div class="hlc-sub">Native · 1080p · 1440p · 3840×2160</div>
+      </div>
+    </div>
+
+    <!-- Interactive App Window Mockup matching actual screenshots -->
+    <div class="hero-app-strip">
+      <div class="app-window">
+        <div class="app-titlebar">
+          <div class="tdot" style="background:#ff5f57"></div>
+          <div class="tdot" style="background:#febc2e"></div>
+          <div class="tdot" style="background:#28c840"></div>
+          <span class="app-titlebar-label">OneTake</span>
+        </div>
+        <div class="app-content">
+          <!-- Control Panel -->
+          <div class="app-panel">
+            <div class="ap-group-label">Capture</div>
+            <div class="ap-row">
+              <span class="ap-row-label">Display</span>
+              <span class="ap-row-val">Display 1 (1,470x956) <span class="ap-chevron">▾</span></span>
+            </div>
+            <div class="ap-row">
+              <span class="ap-row-label">Audio Source</span>
+              <span class="ap-row-val">Both <span class="ap-chevron">▾</span></span>
+            </div>
+            <div class="ap-row">
+              <span class="ap-row-label">Resolution</span>
+              <span class="ap-row-val">Native (Display Resolution) <span class="ap-chevron">▾</span></span>
+            </div>
+            <div class="ap-group-label">Overlay</div>
+            <div class="ap-btn-group">
+              <div class="ap-btn script-on">Show Script</div>
+              <div class="ap-btn">Layout Settings</div>
+            </div>
+            <div class="ap-rec">
+              Start Recording
+            </div>
+          </div>
+          
+          <!-- Screen Preview Overlay with custom Canvas Gradient -->
+          <div class="app-preview">
+            <div class="preview-tele">
+              <div class="preview-tele-bar">
+                <span class="ptb-title">▲ LOOK HERE (CAMERA DIRECTLY ABOVE) ▲</span>
+                <span class="ptb-active">scrolling ●</span>
+              </div>
+              <div class="preview-tele-text">
+                <div class="pt-dim">Type or paste your script here...</div>
+                <div class="pt-bright">OneTake handles scrolling and camera alignments automatically.</div>
+              </div>
+            </div>
+            <div class="preview-cursor"></div>
+            <div class="preview-cam">👤</div>
+            <div class="preview-sub">
+              <span class="sub-w">the</span>
+              <span class="sub-w">new</span>
+              <span class="sub-w on">dashboard</span>
+              <span class="sub-w">loads</span>
+              <span class="sub-w">fast</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <div class="ruled-section" id="features">
+
+    <div class="takes-header">
+      <h2 class="takes-heading">Four features.<br><em>Zero post-production.</em></h2>
+      <span class="takes-count">04 TAKES</span>
+    </div>
+
+    <!-- TAKE 01: Teleprompter -->
+    <div class="take" id="take-teleprompter">
+      <div class="take-index">
+        <span class="take-n">01</span>
+        <div class="take-line"></div>
+      </div>
+      <div class="take-copy">
+        <div class="take-kicker">Invisible Script</div>
+        <h3 class="take-title">Read your script.<br>Look like you <em>didn't.</em></h3>
+        <p class="take-desc">A glassmorphic teleprompter overlay keeps your eyes on the lens while you read. Custom AppKit integration means zero click-to-focus interruptions — you can drag, scroll, and adjust it mid-recording without disturbing your flow.</p>
+        
+        <div class="take-specs">
+          <div class="ts-row">
+            <span class="ts-key">Auto-start delay</span>
+            <span class="ts-val">3 seconds (recording-synced)</span>
+          </div>
+          <div class="ts-row">
+            <span class="ts-key">Scroll speed</span>
+            <span class="ts-val">10 – 120 px/s</span>
+          </div>
+          <div class="ts-row">
+            <span class="ts-key">Font size</span>
+            <span class="ts-val">16pt – 48pt</span>
+          </div>
+          <div class="ts-row">
+            <span class="ts-key">Overlay opacity</span>
+            <span class="ts-val">20% – 100%</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Interactive Teleprompter visual matching Screen 4 -->
+      <div class="take-vis">
+        <div class="v-tele">
+          <div class="v-tele-win">
+            <!-- Teleprompter Green Header from screenshot -->
+            <div class="v-tele-bar" style="background:var(--accent-green-pale); border-bottom:1px solid var(--accent-green);">
+              <span class="v-tele-title" style="color:var(--accent-green); font-weight:bold;">▲ LOOK HERE (CAMERA DIRECTLY ABOVE) ▲</span>
+              <span class="v-tele-scroll-badge" id="teleScrollBadge" style="color:var(--accent-green); background:rgba(52, 199, 89, 0.1);">scrolling</span>
+            </div>
+            
+            <div class="v-tele-body">
+              <div class="v-tele-scroll-container" id="teleScrollContainer">
+                <div class="v-tele-line vtl-dim">Hi there! Welcome to OneTake.</div>
+                <div class="v-tele-line vtl-dim">This script is scrolling on your screen,</div>
+                <div class="v-tele-line vtl-dim">directly in front of your camera lens.</div>
+                <div class="v-tele-line vtl-active">Type or paste your script here...</div>
+                <div class="v-tele-line vtl-active">Adjust scrolling speeds live during capture.</div>
+                <div class="v-tele-line vtl-dim">You can scroll, drag, and modify text</div>
+                <div class="v-tele-line vtl-dim">without taking focus off the video capture.</div>
+                <div class="v-tele-line vtl-dim">Perfect eye contact, every single time.</div>
+              </div>
+              <div class="v-tele-fade"></div>
+            </div>
+            
+            <!-- Controls area matching teleprompter bottom controls -->
+            <div class="v-tele-controls">
+              <div class="vtc-row">
+                <span class="vtc-label">SPEED</span>
+                <div class="vtc-track vtc-slider-container">
+                  <input type="range" id="teleSpeedSlider" class="vtc-slider" min="0" max="120" value="45">
+                </div>
+                <span class="vtc-val" id="teleSpeedVal">45px/s</span>
+              </div>
+            </div>
+            
+            <div class="v-tele-options-grid">
+              <div class="v-tele-opt-btn" id="teleOptFontMinus">Font -</div>
+              <div class="v-tele-opt-btn" id="teleOptFontPlus">Font +</div>
+              <div class="v-tele-opt-btn" id="teleOptOpacityMinus">Glass -</div>
+              <div class="v-tele-opt-btn" id="teleOptOpacityPlus">Glass +</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAKE 02: Camera -->
+    <div class="take" id="take-camera">
+      <div class="take-index">
+        <span class="take-n">02</span>
+        <div class="take-line"></div>
+      </div>
+      <div class="take-copy">
+        <div class="take-kicker">Smart Camera Bubble</div>
+        <h3 class="take-title">Half-size on screen.<br><em>Full quality</em> on export.</h3>
+        <p class="take-desc">The floating camera bubble renders at 0.5× during recording so it stays out of your way. In the exported file it composites at 1.0× full resolution — correctly scaled at Native, 1080p, 1440p, or 4K, with border and shadow proportions preserved via Retina point scaling.</p>
+        <div class="take-specs">
+          <div class="ts-row">
+            <span class="ts-key">Preview size</span>
+            <span class="ts-val">0.5× (100–600px slider)</span>
+          </div>
+          <div class="ts-row">
+            <span class="ts-key">Export size</span>
+            <span class="ts-val">1.0× full resolution</span>
+          </div>
+          <div class="ts-row">
+            <span class="ts-key">Shapes</span>
+            <span class="ts-val">Circle · Rounded rectangle</span>
+          </div>
+          <div class="ts-row">
+            <span class="ts-key">Corners</span>
+            <span class="ts-val">TL · TR · BL · BR</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Interactive Camera visual matching settings Screen 5 -->
+      <div class="take-vis">
+        <div class="v-cam">
+          <div class="v-cam-row">
+            <span class="v-cam-label">On-screen</span>
+            <div class="v-cam-preview">
+              <div class="v-cam-screen-lines">
+                <div class="vcsl" style="width:70%"></div>
+                <div class="vcsl" style="width:50%"></div>
+                <div class="vcsl" style="width:80%"></div>
+              </div>
+              <div class="v-bubble sm bottom-right" id="demoCamBubble">👤</div>
+            </div>
+            <span class="v-badge vb-screen">0.5×</span>
+          </div>
+          
+          <div class="v-cam-controls">
+            <div class="v-cam-btn active" data-cam-pos="bottom-right">Bottom-Right</div>
+            <div class="v-cam-btn" data-cam-pos="bottom-left">Bottom-Left</div>
+            <div class="v-cam-btn" data-cam-pos="top-right">Top-Right</div>
+            <div class="v-cam-btn" data-cam-pos="top-left">Top-Left</div>
+            <div class="v-cam-btn active" data-cam-shape="circle">Circle</div>
+            <div class="v-cam-btn" data-cam-shape="rect">Rounded Rect</div>
+          </div>
+          
+          <div class="v-cam-row">
+            <span class="v-cam-label">Exported</span>
+            <div class="v-cam-export">
+              <div class="v-bubble lg">👤</div>
+            </div>
+            <span class="v-badge vb-export">1.0×</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAKE 03: Cursor -->
+    <div class="take" id="take-cursor">
+      <div class="take-index">
+        <span class="take-n">03</span>
+        <div class="take-line"></div>
+      </div>
+      <div class="take-copy">
+        <div class="take-kicker">Smart Cursor Spotlight</div>
+        <h3 class="take-title">Your cursor stops.<br>The camera <em>follows.</em></h3>
+        <p class="take-desc">When the cursor idles or clicks, OneTake automatically zooms in — a live focus spotlight with no keyframes to draw. A 4-second suppression window at recording start prevents accidental triggers while you settle in.</p>
+        <div class="take-specs">
+          <div class="ts-row">
+            <span class="ts-key">Zoom strength</span>
+            <span class="ts-val">1.0× – 2.0×</span>
+          </div>
+          <div class="ts-row">
+            <span class="ts-key">Idle delay</span>
+            <span class="ts-val">0.1s – 2.0s</span>
+          </div>
+          <div class="ts-row">
+            <span class="ts-key">Startup suppression</span>
+            <span class="ts-val">4 seconds</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Interactive Cursor visual -->
+      <div class="take-vis">
+        <div class="v-cursor">
+          <div class="v-cursor-screen" id="cursorScreen">
+            <div class="v-cursor-pane" id="cursorPane">
+              <div class="v-cursor-gridlines">
+                <div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div>
+                <div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div>
+                <div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div>
+                <div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div>
+                <div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div>
+                <div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div><div class="vcgl-cell"></div>
+              </div>
+            </div>
+            
+            <div class="vc-rings" id="cursorRings">
+              <!-- Animated rings spawn dynamically -->
+            </div>
+            <div class="vc-dot" id="cursorDot"></div>
+            
+            <span class="vc-badge-top" id="cursorBadgeZoom">1.0x (normal)</span>
+            <span class="vc-badge-btm" id="cursorBadgeState">idle 0.5s</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAKE 04: Subtitles -->
+    <div class="take" id="take-subtitles">
+      <div class="take-index">
+        <span class="take-n">04</span>
+        <div class="take-line"></div>
+      </div>
+      <div class="take-copy">
+        <div class="take-kicker">AI-Powered Subtitles</div>
+        <h3 class="take-title">Word-by-word captions.<br><em>Zero editing</em> required.</h3>
+        <p class="take-desc">After recording, Sarvam AI transcribes your audio and burns aesthetically styled subtitles directly into the output video. Choose word-by-word highlights or full segment display, pick a neon color, and export.</p>
+        <div class="take-specs">
+          <div class="ts-row">
+            <span class="ts-key">Display modes</span>
+            <span class="ts-val">Word-by-word · Segment</span>
+          </div>
+          <div class="ts-row">
+            <span class="ts-key">Colors</span>
+            <span class="ts-val">White · Yellow · Cyan · Green</span>
+          </div>
+          <div class="ts-row">
+            <span class="ts-key">Transcription</span>
+            <span class="ts-val">Sarvam AI (post-recording)</span>
+          </div>
+          <div class="ts-row">
+            <span class="ts-key">Background opacity</span>
+            <span class="ts-val">0% – 100%</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Interactive Subtitle visual matching Screen 5 -->
+      <div class="take-vis">
+        <div class="v-subs">
+          <div class="v-sub-screen">
+            <div class="v-sub-screen-background">
+              <div class="v-sub-content-mock">
+                <div class="v-sub-content-line" style="width: 90%;"></div>
+                <div class="v-sub-content-line" style="width: 70%;"></div>
+                <div class="v-sub-content-line" style="width: 80%;"></div>
+              </div>
+            </div>
+            <span class="v-sub-badge">Sarvam AI</span>
+            <div class="v-sub-bar" id="subPreviewBar">
+              <span class="sw">the</span>
+              <span class="sw">new</span>
+              <span class="sw">dashboard</span>
+              <span class="sw">loads</span>
+              <span class="sw">extremely</span>
+              <span class="sw">fast</span>
+            </div>
+          </div>
+          <div class="v-sub-styles">
+            <div class="v-sub-style-group">
+              <div class="vss-pill active" data-sub-mode="word">Word by Word</div>
+              <div class="vss-pill" data-sub-mode="segment">Segment</div>
+            </div>
+            <div class="v-sub-style-group">
+              <div class="vss-pill active" data-sub-color="yellow">Yellow</div>
+              <div class="vss-pill" data-sub-color="cyan">Cyan</div>
+              <div class="vss-pill" data-sub-color="green">Green</div>
+              <div class="vss-pill" data-sub-color="white">White</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- USER GUIDE -->
+  <div class="ruled-section" id="guide">
+    <div class="guide-section">
+      <div class="guide-header-row">
+        <div>
+          <span style="font-family:var(--ff-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-blue);display:block;margin-bottom:12px;font-weight:500;">User Guide</span>
+          <h2 class="takes-heading">Six steps,<br><em>one recording.</em></h2>
+        </div>
+        <span class="takes-count">06 STEPS</span>
+      </div>
+
+      <div class="guide-step-grid">
+        <div class="gs-col">
+          <div class="gs-num">1</div>
+          <div class="gs-tag gst-req">Required</div>
+          <div class="gs-title">Select display &amp; audio source</div>
+          <div class="gs-desc">Pick your recording monitor from the Display dropdown — all connected displays appear automatically. Set Audio to Screen, Mic, Both, or None. Choose output resolution and a save folder.</div>
+        </div>
+        <div class="gs-col">
+          <div class="gs-num">2</div>
+          <div class="gs-tag gst-opt">Optional</div>
+          <div class="gs-title">Configure Layout Settings</div>
+          <div class="gs-desc">Open Layout Settings to set your camera bubble size (100–600px), shape, corner, cursor zoom strength, idle delay, teleprompter font size, scroll speed, and overlay opacity.</div>
+        </div>
+        <div class="gs-col">
+          <div class="gs-num">3</div>
+          <div class="gs-tag gst-opt">Optional</div>
+          <div class="gs-title">Load your script</div>
+          <div class="gs-desc">Paste your script into the built-in editor in Layout Settings. Click "Show Script" — the teleprompter appears orange-highlighted in the control panel. Drag it directly in front of your camera lens.</div>
+        </div>
+        <div class="gs-col">
+          <div class="gs-num">4</div>
+          <div class="gs-tag gst-req">Required</div>
+          <div class="gs-title">Hit Start Recording</div>
+          <div class="gs-desc">Click the blue button. Teleprompter scrolling begins after 3 seconds. Cursor spotlight is suppressed for 4 seconds. Record your content — OneTake handles everything live.</div>
+        </div>
+        <div class="gs-col">
+          <div class="gs-num">5</div>
+          <div class="gs-tag gst-req">Required</div>
+          <div class="gs-title">Stop and wait</div>
+          <div class="gs-desc">Click Stop. OneTake composites the camera bubble at full resolution and blends all audio tracks into a single stereo output. Your file is saved to the chosen directory.</div>
+        </div>
+        <div class="gs-col">
+          <div class="gs-num">6</div>
+          <div class="gs-tag gst-opt">Optional</div>
+          <div class="gs-title">Add AI subtitles</div>
+          <div class="gs-desc">Trigger the Sarvam AI transcription flow. A progress modal shows live status. Pick your subtitle style, color, and opacity — then export the final subtitled video.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPECS -->
+  <div class="ruled-section" id="specs">
+    <div class="specs-section">
+      <div style="margin-bottom:48px;">
+        <span style="font-family:var(--ff-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-blue);display:block;margin-bottom:12px;font-weight:500;">Under the Hood</span>
+        <h2 class="takes-heading" style="max-width:600px;">Native Swift.<br><em>Zero compromises.</em></h2>
+      </div>
+
+      <div class="specs-row">
+        <div class="spec-left">
+          <div class="spec-head">Language &amp; UI</div>
+          <div class="spec-display">Swift <em>5.9+</em></div>
+          <div class="spec-note">SwiftUI panel · AppKit menu bar · SPM</div>
+        </div>
+        <div class="spec-right">
+          <div class="fw-list">
+            <div class="fw-item"><div class="fw-dot"></div>ScreenCaptureKit — low CPU Apple-native stream API<span class="fw-mono">&nbsp;(SCStream)</span></div>
+            <div class="fw-item"><div class="fw-dot"></div>AVFoundation — video encoding and audio blending</div>
+            <div class="fw-item"><div class="fw-dot"></div>Core Image + ImageIO — camera compositing at full resolution</div>
+            <div class="fw-item"><div class="fw-dot"></div>Vision Framework — on-device processing</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="specs-row">
+        <div class="spec-left">
+          <div class="spec-head">Output Resolutions</div>
+          <div class="spec-display"><em>4K</em> max</div>
+          <div class="spec-note">Scales up, down, or pads to target</div>
+        </div>
+        <div class="spec-right">
+          <div class="chip-row">
+            <span class="chip">Native</span>
+            <span class="chip">1080p — 1920×1080</span>
+            <span class="chip hi">1440p — 2560×1440</span>
+            <span class="chip hi">4K — 3840×2160</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="specs-row">
+        <div class="spec-left">
+          <div class="spec-head">Audio Modes</div>
+          <div class="spec-display"><em>4</em> sources</div>
+          <div class="spec-note">Single stereo track output</div>
+        </div>
+        <div class="spec-right">
+          <div class="chip-row">
+            <span class="chip">Screen only</span>
+            <span class="chip">Mic only</span>
+            <span class="chip hi">Both (blended)</span>
+            <span class="chip">None</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="specs-row">
+        <div class="spec-left">
+          <div class="spec-head">Platform</div>
+          <div class="spec-display">macOS <em>13+</em></div>
+          <div class="spec-note">Ventura and later</div>
+        </div>
+        <div class="spec-right">
+          <div class="chip-row">
+            <span class="chip hi">Apple Silicon</span>
+            <span class="chip hi">Intel</span>
+            <span class="chip">Screen Recording permission</span>
+            <span class="chip">Sarvam AI key (subtitles only)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a class="ft-logo" href="#">
+      <span style="width:6px;height:6px;background:var(--ink-muted);border-radius:50%;display:inline-block;"></span>
+      OneTake
+    </a>
+    <div class="ft-links">
+      <a class="ft-link" href="#features">Features</a>
+      <a class="ft-link" href="#guide">Guide</a>
+      <a class="ft-link" href="#specs">Specs</a>
+      <a class="ft-link" href="https://github.com/SambhavSirohi05/OneTake" target="_blank" rel="noopener">GitHub</a>
+      <a class="ft-link" href="download.html">Download</a>
+    </div>
+    <div class="ft-copy">
+      © 2026 OneTake. Open Source under MIT License.
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="main.js"></script>
+</body>
+</html>
